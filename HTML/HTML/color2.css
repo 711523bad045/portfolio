@@ -1,0 +1,49 @@
+body {
+    background: linear-gradient(to bottom, rgb, rgb(123, 212, 154), rgb(134, 212, 134));
+    margin: 20px;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+h1, h2, h4 {
+    margin: 10px 0;
+}
+
+fieldset {
+    margin-bottom: 25px;
+    border: 2px solid #ccc;
+    border-radius: 15px;
+    padding: 20px;
+    background-color: rgba(108, 155, 196, 0.8);
+}
+
+legend h2 {
+    margin: 0;
+}
+
+#na {
+    color: rgb(168, 193, 228);
+}
+
+#ho, #edu, #cr, #sk, #la, #cm, #cp {
+    background-color: #f3f3f3;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+#image {
+    border-radius: 50%;
+}
+
+ul, ol {
+    padding-left: 20px;
+}
+
+#foo {
+    background-color: rgb(86, 75, 144);
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    margin-top: 40px;
+}
