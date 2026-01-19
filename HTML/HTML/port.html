@@ -1,165 +1,623 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="color.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rajesh N - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a3e 100%);
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 15px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        header p {
+            font-size: 1.3em;
+            color: #f0f0f0;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: #fff;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 12px 25px;
+            border-radius: 25px;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .nav a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .section {
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            color: #667eea;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .project-card {
+            background: rgba(30, 30, 60, 0.8);
+            border-radius: 15px;
+            padding: 30px;
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+            border-color: #667eea;
+        }
+
+        .project-header {
+            margin-bottom: 20px;
+        }
+
+        .project-title {
+            font-size: 1.8em;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .project-subtitle {
+            font-size: 1.1em;
+            color: #a0a0c0;
+            margin-bottom: 15px;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tech-badge {
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .tech-react { background: #61dafb; color: #000; }
+        .tech-node { background: #68a063; color: #fff; }
+        .tech-mysql { background: #00758f; color: #fff; }
+        .tech-python { background: #3776ab; color: #fff; }
+        .tech-js { background: #f7df1e; color: #000; }
+        .tech-html { background: #e34c26; color: #fff; }
+        .tech-fastapi { background: #009688; color: #fff; }
+        .tech-ai { background: #ff6f00; color: #fff; }
+        .tech-research { background: #9c27b0; color: #fff; }
+        .tech-webscraping { background: #4caf50; color: #fff; }
+
+        .project-description {
+            color: #d0d0d0;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .features-list {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .features-list li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            color: #e0e0e0;
+        }
+
+        .features-list li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .disclaimer {
+            font-size: 0.85em;
+            color: #a0a0a0;
+            font-style: italic;
+            margin-top: 15px;
+            padding: 10px;
+            background: rgba(255, 193, 7, 0.1);
+            border-left: 3px solid #ffc107;
+            border-radius: 5px;
+        }
+
+        .about-content {
+            background: rgba(30, 30, 60, 0.6);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(102, 126, 234, 0.3);
+        }
+
+        .about-content p {
+            margin-bottom: 15px;
+            color: #d0d0d0;
+            font-size: 1.1em;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .info-card {
+            background: rgba(30, 30, 60, 0.6);
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid rgba(102, 126, 234, 0.3);
+        }
+
+        .info-card h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        .info-card ul {
+            list-style: none;
+        }
+
+        .info-card li {
+            padding: 5px 0;
+            color: #d0d0d0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .info-card li::before {
+            content: '●';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .contact-item {
+            background: rgba(30, 30, 60, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            transition: all 0.3s;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-3px);
+            border-color: #667eea;
+        }
+
+        .contact-item a {
+            color: #667eea;
+            text-decoration: none;
+            font-size: 1.1em;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: rgba(30, 30, 60, 0.6);
+            border-radius: 15px;
+            margin-top: 50px;
+            border: 1px solid rgba(102, 126, 234, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2em;
+            }
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <header>
+            <h1>Rajesh N</h1>
+            <p>Full-Stack Developer | AI Enthusiast | Problem Solver</p>
+        </header>
 
-    <h1 align="center" style="color: rgb(95, 143, 195);" id="hom"> Welcome To My Portfolio </h1>
-    <hr><fieldset>
-        <div align="center" id="imm">
-            <img id="image" src="WhatsApp Image 2025-02-08 at 9.25.03 AM.jpeg" alt="photo" width="200">
-            <h2 style="font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;" id="na
-            ">Rajesh N</h2>
-            <nav>
-                <a href="#hom">Home</a>
-                <a href="#about">About Me</a>
-                <a href="#ed">Education</a>
-                <a href="#ce">Certification</a>
-                <a href="#ski">Skills</a>
-                <a href="#ct">Contact Me</a>
+        <nav class="nav">
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#education">Education</a>
+            <a href="#skills">Skills</a>
+            <a href="#contact">Contact</a>
+        </nav>
 
-            </nav>
-        </div>
-         
-         
-            <h2 style="font-family: serif;" id="about">About Me</h2>
-        <hr>
-        <p id="ho">Hi! I am Rajesh N, I am a dedicated and detail-oriented individual with a passion for
-            continuous learning and growth. Currently pursuing thrid year at KIT College, I am developing a
-            strong foundation in Computer Science and Engineering with specialize Artificial Intelligence And Data
-            Science, with a focus on building practical
-            skills through hands-on projects and collaborative work.
-    </p>
-
-         
-            <h2 id="ed">Education</h2>
-        <hr>
-        <div id="ed" >
-                <p id="edu">
-                <strong>College:</strong> KIT-Kalaignarkarunanidhi Institute Of Technology<br>
-                <strong>Department:</strong> BE.Computer Science And Engineering<br>
-                <strong>Batch:</strong> 2023-2027
-                </p>
+        <section id="about" class="section">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <p>Hi! I'm Rajesh N, a dedicated and detail-oriented developer with a passion for continuous learning and growth. Currently pursuing my third year at KIT College, I'm developing a strong foundation in Computer Science and Engineering with a specialization in Artificial Intelligence and Data Science.</p>
+                <p>I focus on building practical skills through hands-on projects and collaborative work, creating solutions that actually work and solve real-world problems.</p>
             </div>
-         
-            <h2 id="ce">Certification</h2>
-        
-        <hr>
-        <div id="cr">
-        <ol>
-            <li>
-                <h4>Coursera</h4>
-            </li>
-            <ul>
-                <li>Ai For Everyone</li>
-                <li>AWS Cloud Technical Essential</li>
-                <li>Dynamic User Interface</li>
-                <li>Google UX Design</li>
-            </ul>
-            <li>
-                <h4>Infosys Springboard</h4>
-            </li>
-            <ul>
-                <li>c programming</a></li>
-                <li>Java Programming</a></li>
-                <li>Data Structure Using Java </a></li>
+        </section>
 
-            </ul>
-        </ol>
-    </div>
-     
-    
-         
-            <h2 id="ski">Skills</h2>
-        
-
-        <hr>
-        <div id="sk">
-        <ul>
-            <li>Python Programming</li>
-            <li>c Programming</li>
-            <li>Basics of java Programming</li>
-            <li>My SQL</li>
-            <li>HTML/CSS,JAVA SCRIPT</li>
+        <section id="projects" class="section">
+            <h2 class="section-title">Featured Projects (Stuff That Actually Works!)</h2>
             
-        </ul>
-        </div>
-     
-    
-         <h2>Coding Platforms</h2></legend>
-        <hr>
-        <div id="cp">
-            <ul>
-                <li><sub><img src="icons8-leetcode-24.png" alt=""></sub>Leetcode</li>
-                <li><sub><img src="icons8-codechef-48.png" alt="" width="30"></sub>Codechef</li>
-                <li><sub><img src="icons8-hackerrank-24.png" alt=""></sub>Hacker rank</li>
-            </ul>
-        </div>
-        <div></div>
-        <h2>Project</h2>
-        <hr>
-        <div id="prj">
-            <ul>
-                <li><h4><a href="https://github.com/711523bad045/WALL-MART-DATA-ANALYSIS/tree/main">WALL-MART-DATA-ANALYSIS</a></h4></li>
-                <p>Developed a comprehensive data analysis project for Walmart, leveraging
-                   Python, Power BI, and Excel to uncover insights and drive business growth</p>
-                <li><h4><a href=https://github.com/711523bad045/educationwebsite>EDUCATION-WEBSITE</a></h4></li>
-                <p>Designed and developed a education website utilizing HTML and CSS,
-                        showcasing my proficiency in front-end web development</p>
-                <li><h4><a href=https://github.com/711523bad045/fashion.website.com>FASHION-WEBSITE</a></h4></li>
-                <p>Conceptualized and developed a visually stunning fashion website using
-                HTML, CSS showcasing my skills in front-end web development and design.</p>
-                <li><h4><a href=https://github.com/711523bad045/booksky>BOOKSKY</a></h4></li>
-                <p>Designed and developed a dynamic Booksky website, leveraging HTML,
-                 CSS, and JavaScript to create an immersive online experience for book lovers
-</p>                
-            </ul>
-        </div>
-     
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">TNPSC Learning Hub</h3>
+                        <p class="project-subtitle">The Government Exam Cracker</p>
+                    </div>
+                    
+                    <div class="tech-stack">
+                        <span class="tech-badge tech-react">⚛️ React</span>
+                        <span class="tech-badge tech-node">📗 Node.js</span>
+                        <span class="tech-badge tech-mysql">🐬 MySQL</span>
+                    </div>
+                    
+                    <p class="project-description">Full-fledged learning platform with REST APIs, user management, and more bells & whistles than a Christmas tree.</p>
+                    
+                    <ul class="features-list">
+                        <li>Auth that actually keeps bad guys out</li>
+                        <li>Video lectures (buffering not included)</li>
+                        <li>Progress tracking (guilt-free)</li>
+                        <li>Responsive UI (looks good on your grandma's phone too)</li>
+                    </ul>
+                </div>
 
-         
-            <h2>Language</h2>
-            <hr>
-        
-        <div id="la">
-        <ul>
-            <li>Tamil</li>
-            <li>English</li>
-        </ul>
-        </div>
-     
-  
-         
-            <h2 id="ct">Contact Me</h2>
-        
-        <hr>
-        <div id="cm">
-        <ul>
-            <li><sub><img src="icons8-email-50.png" alt="" width="20"></sub><strong>Email:</strong>kit27.ad45@gmail.com</li>
-            <li><sub><img src="icons8-phone-call-50.png" alt="" width="20"></sub><strong>Phone:</strong>9751247267</li>
-        </ul>
-        </div>
-        <h2> Connect Me</h2>
-        <hr>
-        <div id="li">
-            <ul>
-                <li><sub><img src="icons8-github-94.png" alt="" width="
-                    25"></sub><a href="https://github.com/711523bad045">Github</a></li>
-               <li><img src="icons8-linkedin-50.png" alt="" width="20"></a></sub> <a href="https://www.linkedin.com/in/rajesh-n-4922622a6/">Linkedin</a></li>
-            </ul>
-        </div>
-    
-     
-    <footer id="foo">
-        <p align="center">&copy;2025 Rajesh's Portfolio. All rights reserved</p>
-    </footer>
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">Employee Management System</h3>
+                        <p class="project-subtitle">The Office Paper Killer</p>
+                    </div>
+                    
+                    <div class="tech-stack">
+                        <span class="tech-badge tech-python">🐍 Python</span>
+                        <span class="tech-badge tech-js">📜 JavaScript</span>
+                        <span class="tech-badge tech-mysql">🐬 MySQL</span>
+                    </div>
+                    
+                    <p class="project-description">Production-ready EMS because Excel sheets are so 2010.</p>
+                    
+                    <ul class="features-list">
+                        <li>JWT auth (NSA-approved*)</li>
+                        <li>Employee CRUD (Create, Read, Update, Delete... and Coffee)</li>
+                        <li>Role-based access (Keep the interns away from payroll)</li>
+                        <li>Task tracking (Your boss's dream come true)</li>
+                    </ul>
+                    
+                    <p class="disclaimer">*Not actually approved by NSA</p>
+                </div>
 
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">AI Knowledge Assistant</h3>
+                        <p class="project-subtitle">Your 24/7 Smart Study Buddy</p>
+                    </div>
+                    
+                    <div class="tech-stack">
+                        <span class="tech-badge tech-react">⚛️ React</span>
+                        <span class="tech-badge tech-python">🐍 Python</span>
+                        <span class="tech-badge tech-fastapi">⚡ FastAPI</span>
+                        <span class="tech-badge tech-ai">🤖 AI Powered</span>
+                    </div>
+                    
+                    <p class="project-description">Full-stack AI knowledge assistant that's smarter than your group chat (and actually helps with homework).</p>
+                    
+                    <div style="margin-bottom: 15px;">
+                        <strong style="color: #667eea;">Intelligence Features:</strong>
+                    </div>
+                    <ul class="features-list">
+                        <li>AI-powered Q&A system (GPT integration done right)</li>
+                        <li>Natural language processing</li>
+                        <li>Context-aware responses</li>
+                        <li>Smart search functionality</li>
+                        <li>Conversation history (remember what you forgot)</li>
+                        <li>Clean React frontend</li>
+                        <li>FastAPI backend (because speed matters)</li>
+                        <li>User authentication & personalization</li>
+                    </ul>
+
+                    <div style="margin-top: 20px; margin-bottom: 10px;">
+                        <strong style="color: #667eea;">The Stack:</strong>
+                    </div>
+                    <ul class="features-list">
+                        <li><strong>Frontend:</strong> React with Hooks, Modern UI/UX</li>
+                        <li><strong>Backend:</strong> Python FastAPI (async & blazing fast)</li>
+                        <li><strong>AI:</strong> Custom trained models + API integration</li>
+                        <li><strong>State Management:</strong> Context API</li>
+                    </ul>
+
+                    <p class="project-description" style="margin-top: 15px;"><strong>Use Cases:</strong> Study aid, research assistant, concept explainer, late-night homework helper (no judgment).</p>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">Company Intelligence AI</h3>
+                        <p class="project-subtitle">From Domain to Deep Insights</p>
+                    </div>
+                    
+                    <div class="tech-stack">
+                        <span class="tech-badge tech-html">📄 HTML5</span>
+                        <span class="tech-badge tech-python">🐍 Python</span>
+                        <span class="tech-badge tech-ai">🤖 AI Research</span>
+                        <span class="tech-badge tech-webscraping">🕷️ Web Scraping</span>
+                    </div>
+                    
+                    <p class="project-description">Give it a company domain, get back everything except their office WiFi password. Perfect for sales research, competitive analysis, or healthy curiosity.</p>
+                    
+                    <div style="margin-bottom: 15px;">
+                        <strong style="color: #667eea;">What It Does:</strong>
+                    </div>
+                    <ul class="features-list">
+                        <li>Automated web scraping & data mining</li>
+                        <li>Company information aggregation</li>
+                        <li>Industry analysis & insights</li>
+                        <li>Key personnel identification</li>
+                        <li>Product/service cataloging</li>
+                        <li>Market positioning analysis</li>
+                        <li>Social media presence mapping</li>
+                        <li>Contact information extraction</li>
+                    </ul>
+
+                    <div style="margin-top: 20px; margin-bottom: 10px;">
+                        <strong style="color: #667eea;">Tech Magic:</strong>
+                    </div>
+                    <ul class="features-list">
+                        <li><strong>Scraping:</strong> BeautifulSoup, Selenium (for the stubborn sites)</li>
+                        <li><strong>AI/ML:</strong> NLP for data extraction & categorization</li>
+                        <li><strong>Frontend:</strong> Simple HTML interface (keep it clean)</li>
+                        <li><strong>Backend:</strong> Python orchestrating the intelligence gathering</li>
+                    </ul>
+
+                    <p class="project-description" style="margin-top: 15px;"><strong>Real World Use:</strong> Built for sales teams who need company intel fast. Enter "example.com" → Get comprehensive company profile in minutes, not hours of Googling.</p>
+
+                    <p class="disclaimer"><strong>Ethical Note:</strong> Only scrapes publicly available information. No hacking, no dark arts, just smart automation.</p>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">Walmart Data Analysis</h3>
+                        <p class="project-subtitle">Turning Data into Insights</p>
+                    </div>
+                    
+                    <div class="tech-stack">
+                        <span class="tech-badge tech-python">🐍 Python</span>
+                        <span class="tech-badge tech-ai">📊 Power BI</span>
+                        <span class="tech-badge tech-research">📈 Excel</span>
+                    </div>
+                    
+                    <p class="project-description">Developed a comprehensive data analysis project for Walmart, leveraging Python, Power BI, and Excel to uncover insights and drive business growth.</p>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">BookSky</h3>
+                        <p class="project-subtitle">Your Literary Escape</p>
+                    </div>
+                    
+                    <div class="tech-stack">
+                        <span class="tech-badge tech-html">📄 HTML</span>
+                        <span class="tech-badge tech-js">📜 CSS</span>
+                        <span class="tech-badge tech-js">⚡ JavaScript</span>
+                    </div>
+                    
+                    <p class="project-description">Designed and developed a dynamic BookSky website, leveraging HTML, CSS, and JavaScript to create an immersive online experience for book lovers.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="education" class="section">
+            <h2 class="section-title">Education & Certifications</h2>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>Education</h3>
+                    <p style="color: #d0d0d0; margin-bottom: 10px;"><strong>KIT - Kalaignarkarunanidhi Institute of Technology</strong></p>
+                    <p style="color: #a0a0c0;">BE Computer Science and Engineering (AI & Data Science)</p>
+                    <p style="color: #a0a0c0;">Batch: 2023-2027</p>
+                </div>
+
+                <div class="info-card">
+                    <h3>Certifications</h3>
+                    <p style="color: #667eea; margin-bottom: 10px;"><strong>Coursera</strong></p>
+                    <ul>
+                        <li>AI For Everyone</li>
+                        <li>AWS Cloud Technical Essential</li>
+                        <li>Dynamic User Interface</li>
+                        <li>Google UX Design</li>
+                    </ul>
+                    <p style="color: #667eea; margin: 15px 0 10px;"><strong>Infosys Springboard</strong></p>
+                    <ul>
+                        <li>C Programming</li>
+                        <li>Java Programming</li>
+                        <li>Data Structure Using Java</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="section">
+            <h2 class="section-title">Skills</h2>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>Programming Languages</h3>
+                    <ul>
+                        <li>Python Programming</li>
+                        <li>C Programming</li>
+                        <li>Java Programming (Basics)</li>
+                        <li>MySQL</li>
+                        <li>HTML/CSS</li>
+                        <li>JavaScript</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h3>Coding Platforms</h3>
+                    <ul>
+                        <li>LeetCode</li>
+                        <li>CodeChef</li>
+                        <li>HackerRank</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h3>Languages</h3>
+                    <ul>
+                        <li>Tamil</li>
+                        <li>English</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section">
+            <h2 class="section-title">Contact Me</h2>
+            
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <h3 style="color: #667eea; margin-bottom: 10px;">Email</h3>
+                    <a href="mailto:kit27.ad45@gmail.com">kit27.ad45@gmail.com</a>
+                </div>
+
+                <div class="contact-item">
+                    <h3 style="color: #667eea; margin-bottom: 10px;">Phone</h3>
+                    <a href="tel:9751247267">9751247267</a>
+                </div>
+
+                <div class="contact-item">
+                    <h3 style="color: #667eea; margin-bottom: 10px;">GitHub</h3>
+                    <a href="#" target="_blank">View Profile</a>
+                </div>
+
+                <div class="contact-item">
+                    <h3 style="color: #667eea; margin-bottom: 10px;">LinkedIn</h3>
+                    <a href="#" target="_blank">Connect with me</a>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>© 2025 Rajesh's Portfolio. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        const cards = document.querySelectorAll('.project-card, .info-card, .contact-item');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '0';
+                    entry.target.style.transform = 'translateY(20px)';
+                    setTimeout(() => {
+                        entry.target.style.transition = 'all 0.6s ease';
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, 100);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        cards.forEach(card => observer.observe(card));
+    </script>
 </body>
-
 </html>
